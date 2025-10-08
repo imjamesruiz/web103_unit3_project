@@ -6,35 +6,54 @@ import Events from './pages/Events'
 import './App.css'
 
 const App = () => {
-  let element = useRoutes([
+  const element = useRoutes([
     {
       path: '/',
-      element: <Locations />
-    },
-    {
-      path: '/echolounge',
-      element: <LocationEvents index={1} />
-    },
-    {
-      path: '/houseofblues',
-      element: <LocationEvents index={2} />
-    },
-    {
-      path: '/pavilion',
-      element: <LocationEvents index={3} />
-    },
-    {
-      path: '/americanairlines',
-      element: <LocationEvents index={4} />
+      element: (
+        <>
+          <nav>
+            <ul>
+              <li><Link to="/">Home</Link></li>
+              <li><Link to="/events">All Events</Link></li>
+            </ul>
+          </nav>
+          <Locations />
+        </>
+      )
     },
     {
       path: '/events',
-      element: <Events />
-    }
+      element: (
+        <>
+          <nav>
+            <ul>
+              <li><Link to="/">Home</Link></li>
+              <li><Link to="/events">All Events</Link></li>
+            </ul>
+          </nav>
+          <Events />
+        </>
+      )
+    },
+    {
+      path: '/location/:id',
+      element: (
+        <>
+          <nav>
+            <ul>
+              <li><Link to="/">Home</Link></li>
+              <li><Link to="/events">All Events</Link></li>
+            </ul>
+          </nav>
+          <LocationEvents />
+        </>
+      )
+    },
   ])
 
   return (
     <div className='app'>
+      {element}
 
       <header className='main-header'>
         <h1>UnityGrid Plaza</h1>
